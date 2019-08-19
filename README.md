@@ -1,0 +1,2 @@
+# contextbuddy
+Contextbuddy platform documentation
