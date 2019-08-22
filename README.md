@@ -77,6 +77,6 @@ Our plans for the future include:
 - a scalac plugin, updating history with every compilation,
 - detecting security risks in code, 
 - more types of data providers,
-- searching for expert for selected code without support for incremental changes (but detect such situation)
+- searching for expert for selected code without support for incremental changes (but detecting such situations)
 
 ## Tell Us What You Think
