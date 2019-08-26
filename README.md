@@ -25,6 +25,7 @@ Context Buddy will know when to stop its walk, it might just take it longer).
 ![Walk history](imgs/Peek1.gif)
 
 After updating the contexts, click on the file to let Context Buddy index and highlight it.
+Later, Context Buddy will renew it on its own after every Intellij build.
 
 ![Add indexing](imgs/Peek2.gif)
 
