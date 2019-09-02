@@ -52,7 +52,7 @@ More is coming.
 
 ## Installation
 
-Intellij plugin can be downloaded [here.](/plugin.zip)
+Intellij plugin can be downloaded [here.](https://github.com/VirtusLab/contextbuddy/raw/master/plugin.zip)
 Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
 
 ## A More Technical Explanation
