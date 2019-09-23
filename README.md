@@ -52,7 +52,7 @@ More is coming.
 
 ## Installation
 
-Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-SNAPSHOT.zip)
+Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-M12-SNAPSHOT.zip)
 Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
 
 ## A More Technical Explanation
