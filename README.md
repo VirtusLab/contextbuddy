@@ -27,7 +27,7 @@ After opening the plugin for the first time, listen to the popup and click on '
 It may take some time since we are processing all files in you project as deeply as git history allows. 
 Yes, we know we can imporve here and we are working on that (processing single files or dirs or caching caches across whole team).
 
-![Generate Data(imgs/Peek1.gif)
+![Generate Data](imgs/Peek1.gif)
 
 After updating the contexts, click on the file to let Context Buddy index and highlight it.
 Later, Context Buddy will renew it on its own after every Intellij build.
