@@ -7,6 +7,13 @@ Or had your team leader suddenly leave you with little organisation skills and n
 Or had to collaborate with another group, full of people with different opinions on what constitutes a good code.
 In case of any of these apocalyptic events, remember
 
+## Installation
+
+Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-M37.zip)
+Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
+
+We are on our way to Intellij Plugin Repository.
+
 ## Context Buddy Is Here For You
  
 He might not know the answer to every question, but he can tell you who to ask. 
@@ -16,13 +23,11 @@ afterwards.
 ## How To Use (With Examples)
 
 To draw upon Context Buddy's knowledge, first let it gather it. 
-After opening the plugin for the first time, listen to the popup and click on the Walk History tab.
-Enter the number of commits you'd like Context Buddy to go through right now. 
-(Remember, it's no the number of contexts Context Buddy will store in its memory, just the number of comments it will parse during this walk. 
-Also, don't worry about overestimating the number of commits in your repo. 
-Context Buddy will know when to stop its walk, it might just take it longer).
+After opening the plugin for the first time, listen to the popup and click on 'Generate Tokens'.
+It may take some time since we are processing all files in you project as deeply as git history allows. 
+Yes, we know we can imporve here and we are working on that (processing single files or dirs or caching caches across whole team).
 
-![Walk history](imgs/Peek1.gif)
+![Generate Data(imgs/Peek1.gif)
 
 After updating the contexts, click on the file to let Context Buddy index and highlight it.
 Later, Context Buddy will renew it on its own after every Intellij build.
@@ -50,10 +55,7 @@ To unmark the commit, click on Smart History's "Clear selection" button. To chan
 Currently, Context Buddy supports data sources written in Java, Scala, Javascript and Python. But don't worry.
 More is coming.
 
-## Installation
 
-Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-M37.zip)
-Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
 
 ## A More Technical Explanation
 
@@ -75,7 +77,6 @@ newly constructed for every user.
 Our plans for the future include:
 - adding visualisations based on semantic graphs,
 - a CLI API,
-- a scalac plugin, updating history with every compilation,
 - detecting security risks in code, 
 - more types of data providers,
 - searching for expert for selected code without support for incremental changes (but detecting such situations)
