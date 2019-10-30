@@ -44,8 +44,14 @@ To unmark the commit, click on Smart History's "Clear selection" button. To chan
 
 ![Generating history](imgs/selecting_commit.gif)
 
+
+Smart history is interactive. Context Buddy is able to pick up any change that you make to your file and render smart history based on it as long as file parses.
+
 Currently, Context Buddy supports data sources written in **Java, Scala, Javascript, Typescript** and **Python**. We support **YAML** and **JSON** files. 
 But don't worry. More is coming.
+
+![Interactive changes](imgs/interactive.gif)
+
 
 ## Future plans
 
