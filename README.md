@@ -4,7 +4,7 @@
 
 That is, until you joined a project with thirty years of legacy code. 
 Or had your team leader suddenly leave you with little organisation skills and no knowledge of what should you do next. 
-Or had to collaborate with another group, full of people with different opinions on what constitutes a good code.
+Or had to collaborate with another group, full of people with different opinions on what constitutes good code.
 In case of any of these apocalyptic events, remember Context Buddy is here for you.
 
 ## Installation
@@ -19,16 +19,16 @@ We are on our way to Intellij Plugin Repository.
 
 ## How To Use (With Examples)
 
-Context Buddy's Smart history behaves similarly to git blame. In order to turn it on you can either right-click on left border of editor or use quick action 'Smart History'.
+Context Buddy's Smart history behaves similarly to git blame. To turn it on you can either right-click on the left border of the editor or use quick action 'Smart History'.
 
 ![Generating history](imgs/showing_history.gif)
 
 
-Context buddy generates history on the fly and cache it in memory. Processing history in more detalis is more expensive then just using `git blame` so it may take few seconds to compute it (of course it happens asychronously).
+Context buddy generates history on the fly and caches it in memory. Processing history in more detail is more expensive than just using `git blame` so it may take a few seconds to compute it (of course it happens asynchronously).
 
 ![Generating history](imgs/loading_history.gif)
 
-Conext buddy comes with dedicated view where you can inspect history in more details. You can take a look at list of commits that provide meaningful changes to the file (keep in mind that e.g. rename or reformat commits will be ommited). 
+Conext buddy comes with a dedicated view where you can inspect history in more detail. You can take a look at the list of commits that provide meaningful changes to the file (keep in mind that e.g. rename or reformat commits will be omitted). 
 
 To see all changes in a file caused by a specific commit, you can either:
 
@@ -45,7 +45,7 @@ To unmark the commit, click on Smart History's "Clear selection" button. To chan
 ![Generating history](imgs/selecting_commit.gif)
 
 
-Smart history is interactive. Context Buddy is able to pick up any change that you make to your file and render smart history based on it as long as file parses.
+Smart history is interactive. Context Buddy can pick up any change that you make to your file and render smart history based on it as long as file parses.
 
 Currently, Context Buddy supports data sources written in **Java, Scala, Javascript, Typescript** and **Python**. We support **YAML** and **JSON** files. 
 But don't worry. More is coming.
@@ -55,7 +55,7 @@ But don't worry. More is coming.
 
 ## Future plans
 
-We are really close to be ready to work with yours CI to generate and store semantic history of you projects (symbols, origins, etc.). Stay tuned since release is comming :)
+We are really close to being ready to work with your CI to generate and store the semantic history of your projects (symbols, origins, etc.). Stay tuned since release is coming :)
 
 ## Tell Us What You Think
 
