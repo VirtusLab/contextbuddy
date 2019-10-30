@@ -5,80 +5,52 @@
 That is, until you joined a project with thirty years of legacy code. 
 Or had your team leader suddenly leave you with little organisation skills and no knowledge of what should you do next. 
 Or had to collaborate with another group, full of people with different opinions on what constitutes a good code.
-In case of any of these apocalyptic events, remember
+In case of any of these apocalyptic events, remember Context Buddy is here for you.
 
 ## Installation
 
-Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-M37.zip)
+Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-M88.zip)
 Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
+
+![Generate Data](imgs/install.gif)
+
 
 We are on our way to Intellij Plugin Repository.
 
-## Context Buddy Is Here For You
- 
-He might not know the answer to every question, but he can tell you who to ask. 
-He'll also show you the rest of their changes for good measure. And you won't ever have to feel stupid for wasting his time 
-afterwards.
-
 ## How To Use (With Examples)
 
-To draw upon Context Buddy's knowledge, first let it gather it. 
-After opening the plugin for the first time, listen to the popup and click on 'Generate Tokens'.
-It may take some time since we are processing all files in you project as deeply as git history allows. 
-Yes, we know we can imporve here and we are working on that (processing single files or dirs or caching caches across whole team).
+Context Buddy's Smart history behaves similarly to git blame. In order to turn it on you can either right-click on left border of editor or use quick action 'Smart History'.
 
-![Generate Data](imgs/Peek1.gif)
+![Generating history](imgs/showing_history.gif)
 
-After updating the contexts, click on the file to let Context Buddy index and highlight it.
-Later, Context Buddy will renew it on its own after every Intellij build.
 
-![Add indexing](imgs/Peek2.gif)
+Context buddy generates history on the fly and cache it in memory. Processing history in more detalis is more expensive then just using `git blame` so it may take few seconds to compute it (of course it happens asychronously).
+
+![Generating history](imgs/loading_history.gif)
+
+Conext buddy comes with dedicated view where you can inspect history in more details. You can take a look at list of commits that provide meaningful changes to the file (keep in mind that e.g. rename or reformat commits will be ommited). 
 
 To see all changes in a file caused by a specific commit, you can either:
-- hover over one of the commit's lines, until you 
-see a tooltip, and click on the commit hash,
- 
-![Use git blame to parse files](imgs/Peek3.gif)
 
-- or choose one of the commits from Smart History's toggle.
-
-![Color a chosen part](imgs/Peek4.gif)
+- hover over one of the commit's lines, until you see a tooltip, and click on the commit hash
+- or choose one of the commits from Smart History's toggle
 
 In any case, the commit of your choice should change its highlight to a fashionable red, and gain a small line mark 
 on the scrollbar.
 
+
 To unmark the commit, click on Smart History's "Clear selection" button. To change the data provider, choose it from the toggle list
 (that might prove to be more useful later; so far, Context Buddy should only support parsing and highlighting tokens).
 
-![Unmark the commit](imgs/Peek5.gif)
+![Generating history](imgs/selecting_commit.gif)
 
-Currently, Context Buddy supports data sources written in Java, Scala, Javascript and Python. But don't worry.
-More is coming.
+Currently, Context Buddy supports data sources written in **Java, Scala, Javascript, Typescript** and **Python**. We support **YAML** and **JSON** files. 
+But don't worry. More is coming.
 
+## Future plans
 
-
-## A More Technical Explanation
-
-Context Buddy is a tool that allows you to access and gather information about your project.
-
-Its main source of knowledge is your and your team's git history. To properly highlight your files, Context Buddy
-uses contexts extracted from your commit history, or - lacking it for a specific file - information taken from
-`git blame`, providing the user with at least the name of the author of the change.
-
-In order to save your time, Context Buddy synchronizes the repository asynchronously and parses only a given number 
-of contexts in a single walk (and it might also gain some automatic updates during Scala and Typescript compilation in the future). 
-
-To save up space on your machine, on the other hand, some changes will be included in the next version of Context Buddy.
-This one: the first, free version will store your tokens only locally. In the paid version, though, Context Buddy will keep its storage in a remote, private repository, 
-newly constructed for every user. 
-
-## Future Plans
-
-Our plans for the future include:
-- adding visualisations based on semantic graphs,
-- a CLI API,
-- detecting security risks in code, 
-- more types of data providers,
-- searching for expert for selected code without support for incremental changes (but detecting such situations)
+We are really close to be ready to work with yours CI to generate and store semantic history of you projects (symbols, origins, etc.). Stay tuned since release is comming :)
 
 ## Tell Us What You Think
+
+Drop us an email at `contextbuddy@virtuslab.com`. We are looking for any feedback.
