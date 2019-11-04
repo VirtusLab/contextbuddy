@@ -9,7 +9,7 @@ In case of any of these apocalyptic events, remember Context Buddy is here for y
 
 ## Installation
 
-Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.0-M88.zip)
+Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.1-M2.zip)
 Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
 
 ![Generate Data](imgs/install.gif)
