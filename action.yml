@@ -1,0 +1,5 @@
+name: 'pr-info-action'
+description: 'Pull request info action'
+runs:
+  using: 'node12'
+  main: 'dist/index.js'
