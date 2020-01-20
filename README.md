@@ -28,7 +28,7 @@ Context buddy generates history on the fly and caches it in memory. Processing h
 
 ![Generating history](imgs/loading_history.gif)
 
-Conext buddy comes with a dedicated view where you can inspect history in more detail. You can take a look at the list of commits that provide meaningful changes to the file (keep in mind that e.g. rename or reformat commits will be omitted). 
+Context buddy comes with a dedicated view where you can inspect history in more detail. You can take a look at the list of commits that provide meaningful changes to the file (keep in mind that e.g. rename or reformat commits will be omitted). 
 
 To see all changes in a file caused by a specific commit, you can either:
 
