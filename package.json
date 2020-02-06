@@ -19,6 +19,7 @@
   "homepage": "https://github.com/VirtusLab/contextbuddy#readme",
   "dependencies": {
     "@actions/core": "^1.2.1",
-    "@actions/github": "^2.0.1"
+    "@actions/github": "^2.0.1",
+    "@octokit/graphql": "^4.3.1"
   }
 }

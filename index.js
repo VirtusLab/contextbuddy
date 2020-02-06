@@ -1,5 +1,6 @@
 const core = require('@actions/core')
-const github = require('@actions/github') 
+const github = require('@actions/github')
+const { graphql } = require("@octokit/graphql");
 const fs = require('fs')
 
 async function run() {
@@ -7,44 +8,66 @@ async function run() {
 		const {
 			context: {
 				payload: {
-					pull_request,
-					repository
+					repository: {
+						full_name
+					},
+					pull_request
 				}
 			}
 		} = github
-
 
 		if(!pull_request || !pull_request.merged) {
 			throw new Error('Action should be run on merged pull request event')
 		}
 
-		const commentsUrl = pull_request._links.review_comments.href
-		const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
-
 		const repoToken = core.getInput('repo-token')
-		const octokit = new github.GitHub(repoToken, {
-			previews: ["comfort-fade-preview", "everest-preview"]
-		})
+		const repo = full_name.replace(/.+\//, '')
+		const owner = full_name.replace(/\/.+/, '')
+		const number = pull_request.number
 
-		const commentsRes = await octokit.request(commentsUrl)
-		
-		const comments = commentsRes.data.map(comment => ({
-			path: comment.path,
-			user: comment.user.login,
-			body: comment.body,
-			line: comment.line
-		}))
+		const res = await graphql(`query Query($owner: String!, $repo: String!, $number: Int!) {
+			repository(owner: $owner, name: $repo) {
+				pullRequest(number: $number) {
+				  	reviewThreads(first:10){
+				      nodes {
+					    line
+				          comments(first:50) {
+				            nodes {
+				              body
+				              author {
+				                login
+				              }
+				              path
+				              outdated
+				            }
+				          }
+				        }
+				      }
+				    }
+			}
+		  }`,
+		  {
+		    owner,
+		    repo,
+		    number,
+		    headers: {
+    			authorization: `token ${repoToken}`,
+		        accept: 'application/vnd.github.comfort-fade-preview+json'
+  		    }
+		  })
 
-		// in current implementation sbt generateSnapshot will look for the file named ReviewComments.json
+		const comments = res.repository.pullRequest.reviewThreads.nodes
+			.flatMap(thread => thread.comments.nodes.map(node => ({...node, line: thread.line})))
+			.filter(comment => !comment.outdated)
+			.map(({ body, author: { login }, line, path}) => ({ body, user: login, line, path }))
+
 		const filePath = 'ReviewComments.json'
-		const fileContent = JSON.stringify(comments)
-		fs.writeFile(filePath, fileContent, (err) => {
+		fs.writeFile(filePath, JSON.stringify(comments), (err) => {
 		  if(err) throw err
 		  console.log('The file has been saved!');
 		})
-
 	} catch (error) {
-	  core.setFailed(error.message)
+	  core.setFailed(error.message);
 	}
 }
 
