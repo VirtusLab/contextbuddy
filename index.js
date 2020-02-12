@@ -14,14 +14,18 @@ async function run() {
 		} = github
 
 		const owner = full_name.replace(/\/.+/, '')
+		const repo = full_name.replace(/.+\//, '')
 
 
 	  const userKey = core.getInput('user-key')
 	  const octokit = new github.GitHub(userKey)
-	  const repoResponse = await octokit.request("GET /repos/:owner/contextbuddy-storage", {
-	  	owner
-	  })
-	  console.log(`Repos res: ${JSON.stringify(repoResponse)}`)
+// 	  const repoResponse = await octokit.request("GET /repos/:owner/contextbuddy-storage", {
+// 	  	owner
+// 	  })
+// 	  if(repoResponse.status == "200") 
+		  
+		  
+// 	  console.log(`Repos res: ${JSON.stringify(repoResponse)}`)
 
 	  // create repo or retrieve caches
 	
