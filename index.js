@@ -20,8 +20,7 @@ async function run() {
 
 	  // create repo or retrieve caches
 	  const octokit = new github.GitHub(userKey)
-	  const res = await octokit.request("POST /users/:owner/repos", {
-	  	owner,
+	  const res = await octokit.request("POST /user/repos", {
 		name: "contextbuddy-storage",
 		private: true,
 	  })
