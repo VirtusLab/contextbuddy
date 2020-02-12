@@ -22,7 +22,7 @@ async function run() {
 	  const octokit = new github.GitHub(userKey)
 	  const res = await octokit.request("POST users/:owner/repos", {
 	  	owner,
-		name: "contextbuddy-storage"
+		name: "contextbuddy-storage",
 		private: false,
 	  })
 
