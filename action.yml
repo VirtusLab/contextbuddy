@@ -1,0 +1,8 @@
+name: 'Storage action'
+description: 'Either create storage repository or retrieve stored caches'
+inputs:
+  user-key: 
+    required: true
+runs:
+  using: 'node12'
+  main: 'index.js'
