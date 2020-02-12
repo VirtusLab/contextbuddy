@@ -21,7 +21,7 @@ async function run() {
 	  const repoResponse = await octokit.request("GET /repos/:owner/contextbuddy-storage", {
 	  	owner
 	  })
-	  console.log(`Repos res: ${repoResponse}`)
+	  console.log(`Repos res: ${JSON.stringify(repoResponse)}`)
 
 	  // create repo or retrieve caches
 	
