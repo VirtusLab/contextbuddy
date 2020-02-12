@@ -19,6 +19,8 @@ async function run() {
 
 	  const userKey = core.getInput('user-key')
 	  const octokit = new github.GitHub(userKey)
+	  
+	  const res = await octokit.actions.getArtifact({owner, repo, "contextbuddy-snapshot"})
 // 	  const repoResponse = await octokit.request("GET /repos/:owner/contextbuddy-storage", {
 // 	  	owner
 // 	  })
@@ -29,13 +31,13 @@ async function run() {
 
 	  // create repo or retrieve caches
 	
-	  const res = await octokit.request("POST /user/repos", {
-		name: "contextbuddy-storage",
-		private: true,
-	  })
+// 	  const res = await octokit.request("POST /user/repos", {
+// 		name: "contextbuddy-storage",
+// 		private: true,
+// 	  })
 
 
-	  console.log(`Req res: ${res.status}`);
+	  console.log(`Req res: ${JSON.stringify(res)}`);
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
