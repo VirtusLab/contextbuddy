@@ -21,12 +21,8 @@ try {
   const octokit = new github.GitHub(userKey)
   const res = await octokit.request("POST users/:owner/repos", {
   	owner,
-  	body: {
-	  name: "contextbuddy-storage"
-	  description: "",
-	  homepage: "https://github.com",
-	  private: false,
-	}
+	name: "contextbuddy-storage"
+	private: false,
   })
 
 
