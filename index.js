@@ -23,7 +23,7 @@ async function run() {
 	  const res = await octokit.request("POST /users/:owner/repos", {
 	  	owner,
 		name: "contextbuddy-storage",
-		private: false,
+		private: true,
 	  })
 
 
