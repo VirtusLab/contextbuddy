@@ -26,7 +26,7 @@ async function run() {
 	  })
 
 
-	  console.log(`Req res: ${res}`);
+	  console.log(`Req res: ${res.status}`);
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
