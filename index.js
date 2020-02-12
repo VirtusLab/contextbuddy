@@ -20,7 +20,7 @@ async function run() {
 	  const userKey = core.getInput('user-key')
 	  const octokit = new github.GitHub(userKey)
 	  
-	  const res = await octokit.actions.getArtifact({owner, repo, "contextbuddy-snapshot"})
+	  const res = await octokit.actions.getArtifact({owner, repo, artifact_id: "contextbuddy-snapshot"})
 // 	  const repoResponse = await octokit.request("GET /repos/:owner/contextbuddy-storage", {
 // 	  	owner
 // 	  })
