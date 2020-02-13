@@ -23,7 +23,7 @@ async function run() {
 	  
 	  // find out whether repo exists 
 	  // if not create it
-	  const existsRepo = () =>  octokit.request("HEAD /repos/:owner/contextbuddy-storage", {
+	  const existsRepo = () =>  octokit.request("HEAD /repos/:owner/contextbuddy-str", {
 	  		owner
 	 	 })
 	  
