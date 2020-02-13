@@ -19,25 +19,27 @@ async function run() {
 
 	  const userKey = core.getInput('user-key')
 	  const octokit = new github.GitHub(userKey)
+	 
 	  
 	  // find out whether repo exists 
 	  // if not create it
-	  const repoResponse = await octokit.request("HEAD /repos/:owner/contextbuddy-str", {
-	  	owner
-	  })
+	  const existsRepo = () =>  octokit.request("HEAD /repos/:owner/contextbuddy-storage", {
+	  		owner
+	 	 })
 	  
-// 	  if(repoResponse.status == "200") 
-		  
-		  
-	  console.log(`Repos res: ${JSON.stringify(repoResponse)}`)
-
-// 	  const res = await octokit.request("POST /user/repos", {
-// 		name: "contextbuddy-storage",
-// 		private: true,
-// 	  })
-
-
-// 	  console.log(`Req res: ${JSON.stringify(res)}`);
+	  const createRepo = () => octokit.request("POST /user/repos", {
+			name: "contextbuddy-storage",
+			private: true,
+	  	})
+	  
+	  try {
+	  	await existsRepo()
+		 console.log("repo exists")
+	  } catch (error) {
+		if (error.status !== 404) return // connection error
+		console.log("repo will be created")
+		await createRepo()
+	  }
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
