@@ -26,6 +26,7 @@ async function run() {
 		const createRepo = () => octokit.request("POST /user/repos", {
 			name: "contextbuddy-storage",
 			private: true,
+			auto_init: true
 		})
 
 		try {
