@@ -21,10 +21,10 @@ async function run() {
 
 		try {
 			await existsRepo()
-			core.setOutput('repo-existed', true)
+			core.setOutput('repo-existed', 'true')
 		} catch (error) {
 			if (error.status !== 404) throw error // connection error
-			core.setOutput('repo-existed', false)
+			core.setOutput('repo-existed', 'false')
 			await createRepo()
 		}
 	} catch (error) {
