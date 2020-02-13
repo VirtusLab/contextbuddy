@@ -31,6 +31,7 @@ async function run() {
 
 		try {
 			await existsRepo()
+			core.exportVariable('REPO_EXISTED', true);
 		} catch (error) {
 			if (error.status !== 404) return // connection error
 			await createRepo()
