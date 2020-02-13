@@ -22,7 +22,7 @@ async function run() {
 	  
 	  // find out whether repo exists 
 	  // if not create it
-	  const repoResponse = await octokit.request("HEAD /repos/:owner/contextbuddy-storage", {
+	  const repoResponse = await octokit.request("HEAD /repos/:owner/contextbuddy-str", {
 	  	owner
 	  })
 	  
