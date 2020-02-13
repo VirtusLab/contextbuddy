@@ -20,24 +20,24 @@ async function run() {
 	  const userKey = core.getInput('user-key')
 	  const octokit = new github.GitHub(userKey)
 	  
-	  const res = await octokit.actions.getArtifact({owner, repo, artifact_id: "contextbuddy-snapshot"})
-// 	  const repoResponse = await octokit.request("GET /repos/:owner/contextbuddy-storage", {
-// 	  	owner
-// 	  })
+	  // find out whether repo exists 
+	  // if not create it
+	  const repoResponse = await octokit.request("HEAD /repos/:owner/contextbuddy-storage", {
+	  	owner
+	  })
+	  
 // 	  if(repoResponse.status == "200") 
 		  
 		  
-// 	  console.log(`Repos res: ${JSON.stringify(repoResponse)}`)
+	  console.log(`Repos res: ${JSON.stringify(repoResponse)}`)
 
-	  // create repo or retrieve caches
-	
 // 	  const res = await octokit.request("POST /user/repos", {
 // 		name: "contextbuddy-storage",
 // 		private: true,
 // 	  })
 
 
-	  console.log(`Req res: ${JSON.stringify(res)}`);
+// 	  console.log(`Req res: ${JSON.stringify(res)}`);
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
