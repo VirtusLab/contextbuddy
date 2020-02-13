@@ -16,30 +16,24 @@ async function run() {
 		const owner = full_name.replace(/\/.+/, '')
 		const repo = full_name.replace(/.+\//, '')
 
+		const userKey = core.getInput('user-key')
+		const octokit = new github.GitHub(userKey)
 
-	  const userKey = core.getInput('user-key')
-	  const octokit = new github.GitHub(userKey)
-	 
-	  
-	  // find out whether repo exists 
-	  // if not create it
-	  const existsRepo = () =>  octokit.request("HEAD /repos/:owner/contextbuddy-str", {
-	  		owner
-	 	 })
-	  
-	  const createRepo = () => octokit.request("POST /user/repos", {
-			name: "contextbuddy-str",
+		const existsRepo = () => octokit.request("HEAD /repos/:owner/contextbuddy-storage", {
+			owner
+		 })
+
+		const createRepo = () => octokit.request("POST /user/repos", {
+			name: "contextbuddy-storage",
 			private: true,
-	  	})
-	  
-	  try {
-	  	await existsRepo()
-		 console.log("repo exists")
-	  } catch (error) {
-		if (error.status !== 404) return // connection error
-		console.log("repo will be created")
-		await createRepo()
-	  }
+		})
+
+		try {
+			await existsRepo()
+		} catch (error) {
+			if (error.status !== 404) return // connection error
+			await createRepo()
+		}
 	} catch (error) {
 	  core.setFailed(error.message);
 	}
