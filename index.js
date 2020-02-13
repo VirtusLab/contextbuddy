@@ -3,9 +3,20 @@ const github = require('@actions/github');
 
 async function run() {
 	try {
+		const {
+			context: {
+				payload: {
+					repository: {
+						full_name
+					}
+				}
+			}
+		} = github
+
+		const owner = full_name.replace(/\/.+/, '')
+		const repo = full_name.replace(/.+\//, '')
+		
 		const userKey = core.getInput('user-key')
-		const owner = core.getInput('owner')
-		const repo = core.getInput('repo')
 		
 		const octokit = new github.GitHub(userKey)
 
