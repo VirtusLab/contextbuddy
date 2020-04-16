@@ -1,6 +1,8 @@
+---
 layout: page
 title: "Intellij usage"
 permalink: /intellij/
+---
 
 # Context Buddy
 
