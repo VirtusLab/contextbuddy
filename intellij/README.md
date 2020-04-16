@@ -1,9 +1,3 @@
----
-layout: page
-title: "Intellij usage"
-permalink: /intellij/
----
-
 # Context Buddy
 
 The tool, that allows you to inspect project history in more details. Context buddy analyze history based on tokens: method names, parameters, vars or words depending on language/format used rather then lines as git does.
