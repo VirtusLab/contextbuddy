@@ -14,7 +14,7 @@ If you are interested what is going under the hood please we've wrote a [blogpos
 
 ### Turning it on/off
 
-Context buddy is off be default not to distract developer on daily basis. To turn on (and off) context buddy for given file simply run {turn-on-action} {action-name}.
+Context buddy is off be default not to distract developer on daily basis. To turn on (and off) context buddy for given file simply run 'Smart History' action.
 
 
 ![turnOnOffAction](turnOnOffAction.gif)
