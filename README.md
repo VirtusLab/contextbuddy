@@ -9,13 +9,8 @@ In case of any of these apocalyptic events, remember Context Buddy is here for y
 
 ## Installation
 
-Intellij plugin can be downloaded [here.](https://wip-repos.s3.eu-central-1.amazonaws.com/context-buddy-0.2.1-M2.zip)
-Later on plugin can be installed in Intellij by File -> Settings -> Plugins -> gear icon -> Install Plugin from disk
-
-![Generate Data](imgs/install.gif)
-
-
-We are on our way to Intellij Plugin Repository.
+Intellij plugin can be installed from the IntelliJ Plugin Marketplace by File -> Settings -> Plugins.
+**Make sure you are using IntelliJ 2019.x** (the plugin doesn't work yet on 2020.x versions of the IDE). 
 
 ## How To Use (With Examples)
 
