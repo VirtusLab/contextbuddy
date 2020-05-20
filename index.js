@@ -1,53 +1,73 @@
 const core = require('@actions/core')
-const github = require('@actions/github') 
+const github = require('@actions/github')
+const { graphql } = require("@octokit/graphql");
+const fs = require('fs')
 
 async function run() {
 	try {
 		const {
 			context: {
 				payload: {
-					pull_request,
-					repository
+					repository: {
+						full_name
+					},
+					pull_request
 				}
 			}
 		} = github
 
-
-		if(!pull_request || !pull_request.merged) return
-
-		const commentsUrl = pull_request._links.review_comments.href
-		const commentsEndpoint = commentsUrl.replace('https://api.github.com', '')
-
-		const repoToken = core.getInput('repo-token')
-		const octokit = new github.GitHub(repoToken, {
-			previews: ["comfort-fade-preview", "everest-preview"]
-		})
-
-		const commentsRes = await octokit.request(commentsUrl)
-		const comments = commentsRes.data.map(comment => ({
-			path: comment.path,
-			user: comment.user.login,
-			body: comment.body,
-			line: comment.line
-		}))
-		const content = Buffer.from(JSON.stringify(comments)).toString('base64')
-
-		const storagePath = '.storage'
-		const storageFile = await octokit.request(`GET /repos/${repository.full_name}/contents/${storagePath}`)
-		const storage = {
-		  owner: repository.owner.login,
-		  repo: repository.name,
-		  path: storagePath,
-		  message: 'Add context for PR ' + pull_request.number,
-		  content
+		if(!pull_request || !pull_request.merged) {
+			throw new Error('Action should be run on merged pull request event')
 		}
 
-		if(storageFile.status == '200') storage.sha = storageFile.data.sha		
+		const repoToken = core.getInput('repo-token')
+		const repo = full_name.replace(/.+\//, '')
+		const owner = full_name.replace(/\/.+/, '')
+		const number = pull_request.number
 
-		octokit.repos.createOrUpdateFile(storage)
+		const res = await graphql(`query Query($owner: String!, $repo: String!, $number: Int!) {
+			repository(owner: $owner, name: $repo) {
+				pullRequest(number: $number) {
+				  	reviewThreads(first:10){
+				      nodes {
+					    line
+				          comments(first:50) {
+				            nodes {
+				              body
+				              author {
+				                login
+				              }
+				              path
+				              outdated
+				            }
+				          }
+				        }
+				      }
+				    }
+			}
+		  }`,
+		  {
+		    owner,
+		    repo,
+		    number,
+		    headers: {
+    			authorization: `token ${repoToken}`,
+		        accept: 'application/vnd.github.comfort-fade-preview+json'
+  		    }
+		  })
 
+		const comments = res.repository.pullRequest.reviewThreads.nodes
+			.flatMap(thread => thread.comments.nodes.map(node => ({...node, line: thread.line})))
+			.filter(comment => !comment.outdated)
+			.map(({ body, author: { login }, line, path}) => ({ body, user: login, line, path }))
+
+		const filePath = 'ReviewComments.json'
+		fs.writeFile(filePath, JSON.stringify(comments), (err) => {
+		  if(err) throw err
+		  console.log('The file has been saved!');
+		})
 	} catch (error) {
-	  core.setFailed(error.message)
+	  core.setFailed(error.message);
 	}
 }
 
