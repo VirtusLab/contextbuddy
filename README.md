@@ -6,14 +6,14 @@ Then put the following code in .github/workflows/main.yml
 
 Next add your GitHub Personal Access Token named STORAGE_SECRET to the project which uses the workflow.
 
-The token is required to create and checkout repository named contextbuddy-storage under your profile which will be used to store ContextBuddy snapshots. 
+The token is required to create and checkout repository named contextbuddy-storage under your profile which will be used to store ContextBuddy snapshots.
 
 ```
 name: ContextBuddy CI
 
 on:
  push:
-  branches: 
+  branches:
    - master
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
     name: Generate and save snapshot
     steps:
     - name: Set env
-      run: | 
+      run: |
        echo ::set-env name=USER_SECRET::${{ secrets.STORAGE_SECRET }}
        echo ::set-env name=OWNER::$(echo "${GITHUB_REPOSITORY/\/*/}")
        echo ::set-env name=REPO::$(echo "${GITHUB_REPOSITORY/*\//}")
@@ -30,15 +30,15 @@ jobs:
       id: create-storage
       uses: VirtusLab/contextbuddy@storage-gh-actions
       with:
-       user-key: ${{ env.USER_SECRET }} 
+       user-key: ${{ env.USER_SECRET }}
     - name: Checkout storage repository
       uses: actions/checkout@v2
-      with: 
+      with:
        repository: ${{ env.OWNER }}/contextbuddy-storage
        token: ${{ env.USER_SECRET }}
     - name: Copy storage
       if: steps.create-storage.outputs.repo-existed == 'true'
-      run: mkdir -p ~/.contextbuddy/ && cp -r ${{ env.REPO }} ~/.contextbuddy/
+      run: mkdir -p ~/.contextbuddy/ && [ ! -f ${{ env.REPO }} ] || cp -r ${{ env.REPO }} ~/.contextbuddy/
     - name: Checkout repository
       uses: actions/checkout@v2
     - name: Cache SBT
@@ -63,12 +63,13 @@ jobs:
       run: sbt generateSnapshot
     - name: Checkout storage repository
       uses: actions/checkout@v2
-      with: 
+      with:
        repository: ${{ env.OWNER }}/contextbuddy-storage
        token: ${{ env.USER_SECRET }}
     - name: Save snapshot to storage
-      run: | 
+      run: |
        cp -rf ~/.contextbuddy/$REPO ./
+       rm -rf $REPO/storage/.git
        git add .
        git commit -m 'Update snapshot'
        git push -ff
