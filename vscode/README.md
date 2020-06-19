@@ -52,12 +52,12 @@ Additionally, we provide options that can configure colors even further.
 Context Buddy can highlight code by (with options):
 
  * **Hash** - unique color will be assigned for each commit
-   * **static** - each commit has the same commit assigned across all files (this may make colors less distinct among single file)
+   * **static** - each commit has the same color assigned across all files (this may make colors less distinct among single file)
  * **Author** - unique color will be assigned for each commit with the same author
-   * **static** - each author has the same commit assigned across all files (this may make colors less distinct among single file)
+   * **static** - each author has the same color assigned across all files (this may make colors less distinct among single file)
  * **Months** - unique color will be assigned for each month as a period of time so November 2018 and November 2019 will have different colors assigned
-   * **static** - each month has the same commit assigned across all files (this may make colors less distinct among single file)
- * **History** - colors are picked from gradient-based on git-history, so older commits will be assigned with a color close to starting of gradient and newer closer to end of it
+   * **static** - each month has the same color assigned across all files (this may make colors less distinct among single file)
+ * **History** - colors are picked from the gradient, based on git history. As a result, older commits will be assigned with a color similar to the start of gradient. On the other hand, newer commits will be assigned to the color similar to the end of it
    * **discrete** - colors will be picked using a fixed step in gradient (1/N) rather than distance based on relative difference of commit times
    * **reverse** - reverses the ordering
    * **fade** - color will fade out for older commits
