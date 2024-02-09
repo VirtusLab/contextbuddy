@@ -1,10 +1,12 @@
-# Context Buddy
+# Context Buddy for vscode
 
-The tool, that allows you to inspect project history in more detail. Context Buddy analyzes history based on tokens: method names, parameters, vars or words depending on language/format used rather then lines as git does.
+The tool enables detailed examination of project history. Context Buddy scrutinizes historical changes by focusing on specific elements such as method names, parameters, variables, or words, which varies according to the language or format, in contrast to git, which tracks changes line by line.
 
 It means that it assigns multiple commits to a single line, ignores whitespace changes (if they have no semantic meaning) or tracks file renames properly.
 
-If you are interested in what is going under the hood please we've written a [blogpost](https://medium.com/@m.bednarz/165dac84425) about that.
+This implies that it can attribute a single line to multiple commit histories, overlooks changes in whitespace when they hold no semantic significance, and accurately monitors file renames.
+
+For those curious about the mechanics of this process, we've elaborated on the subject in a [blogpost](https://medium.com/@m.bednarz/165dac84425).
 
 
 ![demo](demo.gif)
@@ -14,7 +16,7 @@ If you are interested in what is going under the hood please we've written a [bl
 
 ### Turning it on/off
 
-Context buddy is off by default so that it doesn’t distract developer on a daily basis. To turn on (and off) Context Buddy for a given file simply run `Context Buddy: toggle` action.
+Context Buddy is set to inactive by default to avoid daily interruptions for developers. To activate (or deactivate) Context Buddy for a specific file, just run `Context Buddy: toggle` action.
 
 
 ![turnOnOffAction](turnOnOffAction.gif)
@@ -29,9 +31,9 @@ Another way to turn on/off Context Buddy it to use button in the provided user i
 
 ### Highlights: Hovers and color
 
-When turned on, Context buddy provides highlight tokens with hovers over each token in the file. Tokens are highlighted according to the last commit that affects it (see different options below).
+Once activated, Context Buddy enhances the file by enabling hover functionality over each token, highlighting them based on the most recent commit that impacted them (refer to the various options provided below).
 
-Hover gives information about token, author, date as well as commit message. 
+The hover feature displays details about the token, the author, the date, and the commit message. 
 
 **Context buddy provides commits that actually changed given token so it may be different then commit that git blame provides**
 
@@ -39,9 +41,9 @@ Hover gives information about token, author, date as well as commit message.
 
 ### Highlight by: change the way colors are applied
 
-Context buddy can provide different way to assign colors to commits (and context where lastly changed by it).
+Context Buddy offers various methods for color-coding commits (and the contexts last modified by them).
 
-Color settings can be changed using UI or provided actions.
+The color configurations can be adjusted through the user interface or by using specific provided actions.
 
 ![highlightBy](highlightBy.gif)
 
