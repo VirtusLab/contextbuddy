@@ -1,8 +1,8 @@
-# Context Buddy
+# Context Buddy intellij
 
-The tool that allows you to inspect project history in more detail. Context Buddy analyzes history based on tokens: method names, parameters, vars or words depending on language/format used rather than lines as git does.
+The tool allows you to inspect project history in more detail. The Context Buddy analyzes history based on tokens: method names, parameters, vars or words depending on language/format used rather than lines as git does.
 
-It means that it assigns multiple commits to a single line, ignores whitespace changes (if they have no semantic meaning) or tracks file renames properly.
+It means it assigns multiple commits to a single line, ignores whitespace changes (if they have no semantic meaning) or tracks file renames properly.
 
 If you are interested in what's going on under the hood, please check out our [blogpost](https://medium.com/@m.bednarz/165dac84425).
 
@@ -10,11 +10,11 @@ If you are interested in what's going on under the hood, please check out our [b
 ![demo](demo.gif)
 
 
-## How to use Context Buddy
+## How to use Context Buddy for intellij
 
 ### Turning it on/off
 
-Context buddy is not enabled by default, so that its highlighting doesn’t distract the developer all the time. To toggle Context Buddy for a given file, simply run 'Smart History' action.
+Context buddy for intellij is not enabled by default, so that its highlighting doesn’t distract the developer all the time. To toggle Context Buddy for a given file, simply run 'Smart History' action.
 
 
 ![turnOnOffAction](turnOnOffAction.gif)
